@@ -1,0 +1,78 @@
+.success{
+  background-color: green !important;
+  color: white;
+  font-size: 30px;
+}
+
+.warning{
+  background-color: yellow !important;
+  color: white;
+  font-size: 55px;
+}
+
+.danger{
+  background-color: red !important;
+  color: white;
+  font-size: 88px;
+}
+
+.normal{
+  display: inline-block;
+  border-radius: 8px;
+  color: white;
+  font-size: 111px;
+}
+
+.news{
+  width: 800px;
+  margin: 0 auto;
+}
+
+.cell{
+  display: flex;
+  padding: 10px;
+  border-bottom: 1px dashed gray;
+  align-items: center;
+}
+
+.cell > span:last-child{
+  margin-left: auto;
+}
+
+.cell > img{
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+}
+
+.page {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.page>span{
+  display: inline-block;
+  padding: 3px 8px;
+  color: gray;
+  border: 1px solid gray;
+  border-radius: 3px;
+  margin: 0 3px;
+  user-select: none;
+}
+
+.page>span:not(.cur):hover{
+  color: orange;
+  border-color: orange;
+  cursor: pointer;
+}
+
+.page> .cur{
+  background-color: orange;
+  color: white;
+}
+
+.default{
+  border-color: lightgray !important;
+  color: lightgray !important;
+  cursor: default !important;
+}
