@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id = "root"></div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <!-- 生产环境中不建议使用 -->
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+        //使用时间这种高级功能，通常使用类方式
+        class Demo extends React.Component{
+            show(){
+                console.log("点击事件触发!");
+            }
+
+            render(){
+                return(
+                    <div>
+                        <button onClick={this.show}>点击事件</button>
+                        {/*标签必须闭合*/}
+                        <input type="text" onBlur={this._onblur}/>
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(<Demo />, root);
+
+    </script>
+</body>
+</html>

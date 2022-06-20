@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hello world</h1>
+    <div id = "root"></div>
+    <script>
+        // 显示当前时间
+        //<h3 class="danger" id="time">当前时间： xxx</h3>
+        let now = new Date().toLocaleTimeString();
+        let h3 = document.createElement('h3');
+        h3.className = "danger";
+        h3.id = "time";
+        h3.innerText = '当前时间：' + now;
+
+        let root = document.getElementById('root');
+        root.appendChild(h3);
+
+
+
+        //1.获取当前时间
+        //2.制作出h3标签
+    </script>
+</body>
+</html>

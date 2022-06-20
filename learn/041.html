@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id = "root"></div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <!-- 生产环境中不建议使用 -->
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+        //使用时间这种高级功能，通常使用类方式
+        class Demo extends React.Component{
+            name = "sk";
+
+            showName(){
+                console.log(this.name);
+            }
+
+            showName1 = () => {
+                console.log(this.name);
+            }
+
+            render(){
+                return(
+                    <div>
+                        <button onClick={this.showName.bind(this)}>显示名字</button>
+                        <hr />
+                        <button onClick={() => this.showName()}>显示名字</button>
+                        {/*箭头函数语法糖，函数体中只有一行代码时 ()=>{ xxx } 则{}可以省略*/}
+                        <button
+                            onClick={() => {
+                                this.showName();
+                            }}
+                            >显示名字</button>
+                        <hr />
+                        {/*showName1箭头函数，点击时window执行了此方法，但是此方法的this不会变化*/}
+                        <button onClick={this.showName1}>显示名字</button>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<Demo />, root);
+
+    </script>
+</body>
+</html>

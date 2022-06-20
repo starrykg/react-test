@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id = "root"></div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <!-- 生产环境中不建议使用 -->
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+        //组件有两种做法 函数和类
+        function Hello(props) {
+            return (
+                <div>
+                    <p>name: {props.name}</p>
+                    <p>age: {props.age}</p>
+                    <p>sex: {props.sex}</p>
+                </div>
+            )
+        }
+
+        ReactDOM.render(<Hello name="ddd" age = "sss" sex = "man"/>, root)
+
+        class Hell extends  React.Component{
+            render(){
+                return(
+                    <div>
+                        <p>name: {this.props.name}</p>
+                        <p>age: {this.props.age}</p>
+                        <p>sex: {this.props.sex}</p>
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(<Hell  name = "sb" age = "12" sex = "man"/>, root);
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hello world</h1>
+    <div id = "root"></div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <!-- 生产环境中不建议使用 -->
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+    //作为组件函数名大驼峰
+    function HelloWorld() {
+        return <h1>Hello World</h1>
+    }
+
+    ReactDOM.render(HelloWorld(), root);
+    //语法糖写法
+    ReactDOM.render(<HelloWorld />, root);
+
+    let more = (
+            <div>
+                <HelloWorld />
+                <HelloWorld />
+                <HelloWorld />
+                <HelloWorld />
+            </div>
+    );
+    ReactDOM.render(more, root);
+
+    //类方式，创建强大能力的组件，要求必须继承父类
+    class HelloWorldc extends  React.Component{
+        //固定方法
+        render(){
+            return <h1>Hello World class</h1>
+        }
+    }
+
+    //多个render会覆盖
+    ReactDOM.render(new HelloWorldc().render(), root);
+    ReactDOM.render(<HelloWorldc/>, root);
+
+
+    let mr = (
+        <div>
+            <HelloWorldc/>
+            <HelloWorldc/>
+            <HelloWorldc/>
+            <HelloWorldc/>
+        </div>
+    )
+    ReactDOM.render(mr, root);
+
+    </script>
+</body>
+</html>

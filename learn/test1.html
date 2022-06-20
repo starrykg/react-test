@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id = "root"></div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <!-- 生产环境中不建议使用 -->
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+       class Count extends React.Component{
+           price = 1145;
+
+           state = {number : 1};
+
+           _doAdd(){
+               this.setState({number:this.state.number + 1});
+           }
+
+           render(){
+               return(
+                   <div>
+                       <h3>计数器</h3>
+                       <div>
+                           <div>单价:${this.price}</div>
+                           <div>
+                               <button
+                                   onClick={() => this.setState({number:this.state.number - 1})}
+                                   disabled = {this.state.number <= 1}
+                               >-</button>
+                               <b>{this.state.number}</b>
+                               <button onClick={() => this._doAdd()}>+</button>
+                           </div>
+                           <div>总价:${this.state.number * this.price}</div>
+                       </div>
+                   </div>
+               );
+           }
+       }
+
+       ReactDOM.render(<Count />, root);
+
+    </script>
+</body>
+</html>

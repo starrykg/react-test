@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id = "root"></div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <!-- 生产环境中不建议使用 -->
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+        //使用时间这种高级功能，通常使用类方式
+        class Demo extends React.Component{
+            state = {count : 0};
+
+            _clickAdd(){
+                //state 状态的数据必须使用setState
+                this.setState({count: this.state.count + 1}, () => {console.log("回调函数", this.state.count);});
+                console.log(this.state.count);
+                setTimeout( () => {console.log("zx", this.state.count);}, 5 * 1000);
+            }
+
+            render(){
+                return(
+                    <div>
+                        <h3>{this.state.count}</h3>
+                        <button onClick={this._clickAdd.bind(this)}>点击事件</button>
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(<Demo />, root);
+
+    </script>
+</body>
+</html>

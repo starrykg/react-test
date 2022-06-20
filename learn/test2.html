@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id = "root"></div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <!-- 生产环境中不建议使用 -->
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+       class Count extends React.Component{
+          name = "dd";
+          age = 18;
+          married = true;
+
+          names = ["aa", "bb", "cc"];
+          boss = {name:"sb", age:22};
+
+           render(){
+               return(
+                   <div>
+                       <div>{this.name}</div>
+                       <div>{this.age}</div>
+                       <div>{this.married}</div>
+                       <div>{this.names}</div>
+                       <div>{this.names[0]}</div>
+                       <div>{this.boss.name}</div>
+                       <div>{this.boss.age}</div>
+
+                       {/*数学运算符* 三目运算符*/}
+                       <div>{5 + 2}</div>
+                       <div>{5 + 2 * 2}</div>
+                       <div>{this.age > 20}</div>
+                       <div>{this.age != 20 ? "true" : "false"}</div>
+                       {/*逻辑运算符*/}
+                       <div>{0 && 1 ? "true" : "false"}</div>
+                   </div>
+               )
+
+           }
+       }
+
+       ReactDOM.render(<Count />, root);
+
+    </script>
+</body>
+</html>

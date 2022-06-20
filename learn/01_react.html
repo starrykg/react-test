@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hello world</h1>
+    <div id = "root"></div>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script>
+        // react 提供两个类 1.react 负责创建元素 2.reactdom 负责渲染元素，到其他元素中
+        let now = new Date().toLocaleTimeString()
+
+        let h3 = React.createElement(
+            'h3',
+            {id:'time',className:'danger'},
+            "当前时间:" + now
+        );
+        ReactDOM.render(h3, root);
+
+
+        //1.获取当前时间
+        //2.制作出h3标签
+    </script>
+</body>
+</html>
