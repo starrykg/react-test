@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+</head>
+<body>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<!-- 生产环境中不建议使用 -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<div id="example"></div>
+<script type="text/babel">
+    //显示当前时间
+    //使用 ES6 类写法，用 this.props.属性名 来取值。
+    var myStyle = {color:'red',textAlign:'center'}
+
+    class Name extends React.Component {
+        render() {
+            return <h1 style={myStyle}>网站名称：{this.props.name}</h1>;
+        }
+    }
+    class Url extends React.Component {
+        render() {
+            return <h1>网站地址：{this.props.url}</h1>;
+        }
+    }
+    class Nickname extends React.Component {
+        render() {
+            return <h1>网站地址：{this.props.nickname}</h1>;
+        }
+    }
+
+    function App(props) {
+        return (
+            <div>
+                <Name name={props.name}/>
+                <Url  url={props.url}/>
+                <Nickname  nickname={props.nickname}/>
+            </div>
+        );
+    }
+
+    ReactDOM.render(
+        <App name={"hello"} url={"http://hello.com"} nickname={"hello"}/>,
+        document.getElementById('example')
+    );
+</script>
+
+</body>
+</html>

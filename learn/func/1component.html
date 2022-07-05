@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+</head>
+<body>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<!-- 生产环境中不建议使用 -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<div id="example"></div>
+<script type="text/babel">
+    //显示当前时间
+    //使用 ES6 类写法，用 this.props.属性名 来取值。
+    class Clock extends React.Component{
+        render() {
+            return(
+                <div>
+                    <h2>现在是:{this.props.data.toLocaleTimeString()}</h2>
+                </div>
+            )
+        };
+    }
+
+    function trick() {
+        ReactDOM.render(<Clock data={new Date()}/>, document.getElementById("example"));
+    }
+    setInterval(trick, 1000);
+</script>
+
+</body>
+</html>
