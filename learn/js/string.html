@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h1>proxy</h1>
+<div id = "root"></div>
+<script>
+    let string = "apple,banana,orange";
+    string.includes("banana");     // true
+    string.startsWith("apple");    // true
+    string.endsWith("apple");      // false
+    string.startsWith("banana",6)  // true
+    console.log("string.includes(banana)",string.includes("banana"))
+    console.log("string.startsWith(apple)",string.startsWith("apple"))
+    console.log("string.endsWith(apple)",string.endsWith("apple"))
+    console.log("string.startsWith(banana,6)",string.startsWith("banana",6))
+
+    console.log("Hello,".repeat(2));  // "Hello,Hello,"
+    //如果参数是小数，向下取整
+    console.log("Hello,".repeat(3.2));  // "Hello,Hello,Hello,"
+    //如果参数是 0 至 -1 之间的小数，会进行取整运算，0 至 -1 之间的小数取整得到 -0 ，等同于 repeat 零次
+    console.log("Hello,".repeat(-0.5));  // ""
+    //如果参数是 NaN，等同于 repeat 零次
+    console.log("Hello,".repeat(NaN));  // ""
+    //如果参数是负数或者 Infinity ，会报错:
+    //console.log("Hello,".repeat(-1));
+    // RangeError: Invalid count value
+    //console.log("Hello,".repeat(Infinity));
+    // RangeError: Invalid count value
+    //如果传入的参数是字符串，则会先将字符串转化为数字
+    console.log("Hello,".repeat("hh")); // ""
+    console.log("Hello,".repeat("2"));  // "Hello,Hello,"
+
+    //字符串补全
+    console.log("h".padStart(5,"o"));  // "ooooh"
+    console.log("h".padEnd(5,"o"));    // "hoooo"
+    console.log("h".padStart(5));      // "    h"
+
+    //如果指定的长度小于或者等于原字符串的长度，则返回原字符串: 注意
+    console.log("hello".padStart(5,"A"));  // "hello"
+    //如果原字符串加上补全字符串长度大于指定长度，则截去超出位数的补全字符串:
+    console.log("hello".padEnd(10,",world!"));  // "hello,worl"
+    //常用于补全位数：
+    console.log("123".padStart(10,"0"));  // "0000000123"
+
+
+    //模板字符串
+    let string22 = `Hello'\n'world`;
+    console.log(string22);
+    // "Hello'
+    // 'world"
+
+    let string1 =  `Hey,
+    can you stop angry now?`;
+    console.log(string1);
+    // Hey,
+    // can you stop angry now?
+
+    let name = "Mike";
+    let age = 27;
+    let info = `My Name is ${name},I am ${age+1} years old next year.`
+    console.log(info);
+    // My Name is Mike,I am 28 years old next year.
+
+    //字符串中调用函数：
+    function f(){
+        return "have fun!";
+    }
+    let string2= `Game start,${f()}`;
+    console.log(string2);  // Game start,have fun!
+
+    innerHtml = `<ul>
+    <li>menu</li>
+    <li>mine</li>
+    </ul>
+    `;
+    console.log(innerHtml);
+    // 输出
+/*    <ul>
+        <li>menu</li>
+        <li>mine</li>
+    </ul>*/
+
+
+    alert`Hello world!`;
+    // 等价于
+    alert('Hello world!');
+
+
+    function f(stringArr,...values){
+        let result = "";
+        for(let i=0;i<(stringArr !==undefined && stringArr.length>0);i++){
+            result += stringArr[i];
+            if(values[i]){
+                result += values[i];
+            }
+        }
+        return result;
+    }
+    let name111 = 'Mike';
+    let age111 = 27;
+    f`My Name is ${name111},I am ${age111+1} years old next year.`;
+    console.log("111111",f`My Name is ${name111},I am ${age111+1} years old next year.`);
+    // "My Name is Mike,I am 28 years old next year."
+
+    f`My Name is ${name111},I am ${age111+1} years old next year.`;
+    console.log("222222",f`My Name is ${name111},I am ${age111+1} years old next year.`);
+    // 等价于
+    f(['My Name is',',I am ',' years old next year.'],'Mike',28);
+    console.log("111111",f(['My Name is',',I am ',' years old next year.'],'Mike',28));
+
+
+    //过滤 HTML 字符串，防止用户输入恶意内容。 IMPORTANT
+    function f(stringArr,...values){
+        let result = "";
+        for(let i=0;i<stringArr.length;i++){
+            result += stringArr[i];
+            if(values[i]){
+                result += String(values[i]).replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;");
+            }
+        }
+        return result;
+    }
+    name222 = '<Amy&MIke>';
+    f`<p>Hi, ${name222}.I would like send you some message.</p>`;
+    // <p>Hi, &lt;Amy&amp;MIke&gt;.I would like send you some message.</p>
+
+    //i18n`Hello ${name222}, you are visitor number ${visitorNumber}.`;
+    // 你好**，你是第**位访问者
+
+</script>
+</body>
+</html>
